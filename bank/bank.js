@@ -107,38 +107,89 @@ class Conta{
     opcao = leia("Digite o número da sua opção")
     if (opcao == "1"){
         console.log("Testando conta poupança")
+        let numero = parseInt(leia("digite o número da conta : "))
+        let cpf =  leia("Digite o cpf : ")
+        let diaAniversarioPoupanca = leia("Digite o aniversario da sua conta : ")
+        let dia = leia("Digite a data de hoje : ")
+        let cp = new Poupanca(numero,cpf,0,false,diaAniversarioPoupanca)
+        cp.ativar()
+
+    for(let i=1; i<=10; i++){
+        console.log("Movimento "+i)
+        console.log("Saldo da conta : "+cp.saldo+" R$")
+        valor = parseInt(leia("Digite o valor :"))
+        op = leia("Digite D - débito ou C - crédito : ").toUpperCase()
+            if(op == "C"){
+                cp.credito(valor)
+            }
+            else if (op == "D"){
+                cp.debito(valor)
+            }
+    }
+
+    cp.correcao(dia)
+    console.log("Saldo final da conta : "+cp.saldo+" R$")
+}
     }
     else if (opcao == "2"){
         console.log("Testando conta corrente")
+            let numero = parseInt(leia("digite o número da conta : "))
+            let cpf = leia("Digite o cpf : ")
+            let cc = new Corrente(numero,cpf,0,false,3)
+            cc.ativar()
+
+        for(let i=1; i<=10; i++){
+            console.log("Movimento "+i)
+            console.log("Saldo da conta : "+cc.saldo+" R$")
+            valor = parseInt(leia("Digite o valor :"))
+            op = leia("Digite D - débito ou C - crédito : ").toUpperCase()
+
+        if(op == "C"){
+            cc.credito(valor)
+        }
+        else if (op == "D"){
+            cc.debito(valor)
+        }
+    }
+
+    console.log("Saldo final da conta : "+cc.saldo+" R$")
+    if(cc.saldo >= 30){
+        cc.pedirTalao()
+        console.log("Saldo final da conta : "+cc.saldo+" R$")
+    }
+    else{
+        console.log("Você não possui saldo suficiente para pedir talões")
+        }
     }
+}
     else if (opcao == "3"){ 
                 console.log("testando conta especial")
                     let numero = parseInt(leia("Digite o número da conta : "))
                     let cpf =  leia("Digite o cpf : ")
                     let ce1 = new Especial(numero,cpf,0,false,1000)
                     ce1.ativar()
-                    for(let x=1; x<=10; x++){
-                        console.log("Movimento "+x)
-                        console.log("Saldo da conta : "+ce1.saldo)
-                        valor = parseInt(leia("Digite o valor :"))
-                        op = leia("Digite D - débito ou C - crédito : ")
-                            if(op == "D"){
-                                ce1.debito(valor)
-                            }
-                            else if (op == "C"){
-                                if(valor > (ce1.saldo + ce1.limite)){
-                                    console.log("Não há dinheiro suficiente")
-                                }
-                                else if(valor > ce1.saldo){
-                                    let x = valor -  ce1.saldo
-                                    ce1.usarLimite(x)
-            
-                                }
-                                ce1.credito(valor)
-                            }
+        
+                for(let x=1; x<=10; x++){
+                    console.log("Movimento "+x)
+                    console.log("Saldo da conta : "+ce1.saldo)
+                    valor = parseInt(leia("Digite o valor :"))
+                    op = leia("Digite D - débito ou C - crédito : ")
+                            
+                if(op == "D"){
+                    ce1.debito(valor)
                 }
-            
-    }
+                else if (op == "C"){
+                    if(valor > (ce1.saldo + ce1.limite)){
+                    console.log("Não há dinheiro suficiente")
+                    }
+                    else if(valor > ce1.saldo){
+                        let x = valor -  ce1.saldo
+                        ce1.usarLimite(x)
+                    }
+                        ce1.credito(valor)
+                }
+           }
+      }
     else if (opcao == "4"){
         console.log("Testando conta estudantil")
     }
