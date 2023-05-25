@@ -48,6 +48,26 @@ class Conta{
     }
     
     }
+// Sub Classe Especial 
+    class especial extends Conta{
+            constructor(numero,cpf,saldo,ativo,limite){
+                super(numero,cpf,saldo,ativo)
+                this.limite = limite
+             }
+        
+        
+            usarLimite(valor){
+                if(valor > this.limite){
+                    console.log("Impossível realizar, limite indisponível...")
+                }
+                else{
+                    this.limite = this.limite - valor
+                    this.credito(valor)
+                }
+                console.log("Limite atual : "+this.limite)
+                console.log("Saldo atual : "+this.saldo)
+            }
+        }
     //Sub Classe Estudantil
     class estudantil extends Conta{
         constructor(numero, cpf, saldo, ativo, limiteEstudantil){
@@ -91,8 +111,33 @@ class Conta{
     else if (opcao == "2"){
         console.log("Testando conta corrente")
     }
-    else if (opcao == "3"){
-        console.log("Testando conta especial")
+    else if (opcao == "3"){ 
+                console.log("testando conta especial")
+                    let numero = parseInt(leia("Digite o número da conta : "))
+                    let cpf =  leia("Digite o cpf : ")
+                    let ce1 = new Especial(numero,cpf,0,false,1000)
+                    ce1.ativar()
+                    for(let x=1; x<=10; x++){
+                        console.log("Movimento "+x)
+                        console.log("Saldo da conta : "+ce1.saldo)
+                        valor = parseInt(leia("Digite o valor :"))
+                        op = leia("Digite D - débito ou C - crédito : ")
+                            if(op == "D"){
+                                ce1.debito(valor)
+                            }
+                            else if (op == "C"){
+                                if(valor > (ce1.saldo + ce1.limite)){
+                                    console.log("Não há dinheiro suficiente")
+                                }
+                                else if(valor > ce1.saldo){
+                                    let x = valor -  ce1.saldo
+                                    ce1.usarLimite(x)
+            
+                                }
+                                ce1.credito(valor)
+                            }
+                }
+            
     }
     else if (opcao == "4"){
         console.log("Testando conta estudantil")
