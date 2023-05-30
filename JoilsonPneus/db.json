@@ -1,0 +1,25 @@
+{
+  "produtos": [
+  {
+  "id": 1,
+  "descricao": "Pneu Michelan",
+  "estoque": 14,
+  "valor": 300,
+  "imagem": "../JoilsonPneus/assets/pneuMichelan.jpg"
+  },
+  {
+  "id": 2,
+  "descricao": "Pneu Pirelli",
+  "estoque": 12,
+  "valor": 350,
+  "imagem" : "../JoilsonPneus/assets/pneuPirelli.jpg"
+  },
+  {
+  "id": 3,
+  "descricao": "Pneu Extra",
+  "estoque": 8,
+  "valor": 280,
+  "imagem" : "../JoilsonPneus/assets/pneuExtra.jpg"
+  }
+  ]
+ }
