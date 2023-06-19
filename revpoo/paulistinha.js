@@ -1,7 +1,7 @@
 const leia = ("prompt-sync")()
 
 //arrays ou vetores
-let alunos = ["Clemencio", "Takamasa", "Sergin", "Valdir"]
+let alunos = ["Clemencio", "Takamasa", "Dilminho", "Valdir"]
 let notas = [0, 0, 0, 0]
 
 for(let x=0; x=alunos.length; x++){
