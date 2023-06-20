@@ -1,12 +1,5 @@
 const leia = require("prompt-sync")()
-let numero
-numero = parseFloat(leia("Digite o número inteiro positivo: "))
 
-for(let x=1; x<=numero; x++){
-    console.log(x)
-}
-
-const leia = require("prompt-sync")()
 let numero
 let total=0
 
